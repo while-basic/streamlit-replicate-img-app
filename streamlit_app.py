@@ -36,8 +36,8 @@ def configure_sidebar() -> None:
     """
     with st.sidebar:
         with st.form("my_form"):
-            st.info("**Yo fam! Start here ↓**", icon="👋🏾")
-            with st.expander(":rainbow[**Refine your output here**]"):
+            st.info("**Start here ↓**", icon="👇🏻")
+            with st.expander(":rainbow[**Select multiple options:"):
                 # Advanced Settings (for the curious minds!)
                 width = st.number_input("Width of output image", value=1024)
                 height = st.number_input("Height of output image", value=1024)
@@ -50,17 +50,17 @@ def configure_sidebar() -> None:
                 guidance_scale = st.slider(
                     "Scale for classifier-free guidance", value=7.5, min_value=1.0, max_value=50.0, step=0.1)
                 prompt_strength = st.slider(
-                    "Prompt strength when using img2img/inpaint(1.0 corresponds to full destruction of infomation in image)", value=0.8, max_value=1.0, step=0.1)
+                    "Prompt strength when using img2img/inpaint(1.0 corresponds to full destruction of information in image)", value=0.8, max_value=1.0, step=0.1)
                 refine = st.selectbox(
                     "Select refine style to use (left out the other 2)", ("expert_ensemble_refiner", "None"))
                 high_noise_frac = st.slider(
                     "Fraction of noise to use for `expert_ensemble_refiner`", value=0.8, max_value=1.0, step=0.1)
             prompt = st.text_area(
-                ":orange[**Enter prompt: start typing, Shakespeare ✍🏾**]",
+                ":white[**Enter prompt:**]",
                 value="An astronaut riding a rainbow unicorn, cinematic, dramatic")
-            negative_prompt = st.text_area(":orange[**Party poopers you don't want in image? 🙅🏽‍♂️**]",
-                                           value="the absolute worst quality, distorted features",
-                                           help="This is a negative prompt, basically type what you don't want to see in the generated image")
+            negative_prompt = st.text_area(":white[**Something you don't want to see? 🙅🏽‍♂️**]",
+                                           value="faded, blurry, distorted",
+                                           help="This is a negative prompt, type what you don't want to see in the generated image")
 
             # The Big Red "Submit" Button!
             submitted = st.form_submit_button(
@@ -78,9 +78,9 @@ def configure_sidebar() -> None:
             ---
             Follow me on:
 
-            𝕏 → [@tonykipkemboi](https://twitter.com/tonykipkemboi)
+            𝕏 → [@Im_Mr_Chris](https://twitter.com/Im_Mr_Chris)
 
-            LinkedIn → [Tony Kipkemboi](https://www.linkedin.com/in/tonykipkemboi)
+            LinkedIn → [Christopher B. Celaya](https://www.linkedin.com/in/christophercelaya)
 
             """
         )
@@ -111,7 +111,7 @@ def main_page(submitted: bool, width: int, height: int, num_outputs: int,
     if submitted:
         with st.status('👩🏾‍🍳 Whipping up your words into art...', expanded=True) as status:
             st.write("⚙️ Model initiated")
-            st.write("🙆‍♀️ Stand up and strecth in the meantime")
+            st.write("🙆‍♀️ Stand up and stretch in the meantime")
             try:
                 # Only call the API if the "Submit" button was pressed
                 if submitted:
